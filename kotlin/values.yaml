@@ -1,0 +1,19 @@
+javaOpts: -Xms150m -Xmx200m
+resources:
+  limits:
+    cpu: 100m
+    memory: 250Mi
+  requests:
+    cpu: 50m
+    memory: 250Mi
+horizontalPodAutoscaler:
+  minReplicas: 2
+  maxReplicas: 8
+  resources:
+    cpu:
+      type: Utilization
+      averageUtilization: 50
+image:
+  registry: ghcr.io
+  repository: jhandguy/horizontal-pod-autoscaler/kotlin-sample-app
+  tag: 1.0.0
