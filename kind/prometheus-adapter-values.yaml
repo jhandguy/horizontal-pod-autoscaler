@@ -1,0 +1,11 @@
+prometheus:
+  url: http://prometheus-operated.prometheus.svc
+rules:
+  custom:
+    - seriesQuery: 'golang_sample_app_requests_count'
+      resources:
+        template: <<.Resource>>
+      name:
+        matches: "golang_sample_app_requests_count"
+        as: "golang_sample_app_requests_per_second"
+      metricsQuery: 'sum(rate(<<.Series>>{<<.LabelMatchers>>}[1m])) by (<<.GroupBy>>)'

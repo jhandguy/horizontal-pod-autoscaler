@@ -1,0 +1,3 @@
+args:
+  - --metric-resolution=10s
+  - --kubelet-insecure-tls

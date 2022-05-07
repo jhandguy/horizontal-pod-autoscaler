@@ -1,0 +1,27 @@
+resources:
+  limits:
+    cpu: 10m
+    memory: 20Mi
+  requests:
+    cpu: 10m
+    memory: 20Mi
+prometheus:
+  enabled: false
+horizontalPodAutoscaler:
+  minReplicas: 2
+  maxReplicas: 8
+  resources:
+    cpu:
+      type: Utilization
+      averageUtilization: 50
+    memory:
+      type: Utilization
+      averageUtilization: 50
+  metrics:
+    golang_sample_app_requests_per_second:
+      type: AverageValue
+      averageValue: 0.5
+image:
+  registry: ghcr.io
+  repository: jhandguy/horizontal-pod-autoscaler/golang-sample-app
+  tag: 1.0.0

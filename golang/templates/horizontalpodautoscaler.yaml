@@ -1,0 +1,36 @@
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Release.Name }}
+  {{- with .Values.horizontalPodAutoscaler }}
+  minReplicas: {{ .minReplicas }}
+  maxReplicas: {{ .maxReplicas }}
+  metrics:
+    {{- if $.Values.prometheus.enabled }}
+    {{- range $metric, $target := .metrics }}
+    - type: Pods
+      pods:
+        metric:
+          name: {{ $metric }}
+        target:
+          type: {{ $target.type }}
+          averageValue: {{ $target.averageValue }}
+    {{- end }}
+    {{- else }}
+    {{- range $resource, $target := .resources }}
+        - type: Resource
+          resource:
+            name: {{ $resource }}
+            target:
+              type: {{ $target.type }}
+              averageUtilization: {{ $target.averageUtilization }}
+    {{- end }}
+    {{- end }}
+  {{- end }}
