@@ -20,7 +20,7 @@ horizontalPodAutoscaler:
   metrics:
     golang_sample_app_requests_per_second:
       type: AverageValue
-      averageValue: 0.5
+      averageValue: 10
 image:
   registry: ghcr.io
   repository: jhandguy/horizontal-pod-autoscaler/golang-sample-app

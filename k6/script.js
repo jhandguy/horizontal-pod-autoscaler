@@ -5,7 +5,7 @@ import { Rate } from 'k6/metrics';
 export const options = {
     stages: [
         {target: 100, duration: '3m'},
-        {target: 100, duration: '1m'},
+        {target: 100, duration: '2m'},
     ],
     thresholds: {
         'checks': ['rate>0.9'],
