@@ -18,8 +18,15 @@ fun Application.module() {
     install(ContentNegotiation) {
         json()
     }
+    routeHealth()
     routeSuccess()
     routeFailure()
+}
+
+fun Application.routeHealth(): Routing = routing {
+    get("/monitoring/health") {
+        call.respond(HttpStatusCode.OK)
+    }
 }
 
 fun Application.routeSuccess(): Routing = routing {

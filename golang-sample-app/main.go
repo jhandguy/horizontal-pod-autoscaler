@@ -69,6 +69,7 @@ func main() {
 	}
 
 	httpMux := http.NewServeMux()
+	httpMux.HandleFunc("/monitoring/health", func(_ http.ResponseWriter, _ *http.Request) {})
 	httpMux.HandleFunc("/success", handleSuccess(resp))
 	httpMux.HandleFunc("/error", handleError(http.StatusInternalServerError))
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", httpPort), httpMux))

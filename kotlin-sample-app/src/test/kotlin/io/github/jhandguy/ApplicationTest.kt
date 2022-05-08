@@ -21,6 +21,9 @@ class ApplicationTest {
         application {
             module()
         }
+        client.get("/monitoring/health").apply {
+            assertEquals(HttpStatusCode.OK, status)
+        }
         client.get("/success").apply {
             assertEquals(HttpStatusCode.OK, status)
             assertEquals("{\"node\":\"kind-control-plane\",\"namespace\":\"sample-app\",\"pod\":\"sample-app-6bd9dc6d5d-jstn2\"}", bodyAsText())

@@ -48,3 +48,21 @@ spec:
               memory: {{ .limits.memory }}
               cpu: {{ .limits.cpu }}
             {{- end }}
+          startupProbe:
+            httpGet:
+              path: /monitoring/health
+              port: 8080
+              scheme: HTTP
+            periodSeconds: 1
+            failureThreshold: 120
+          readinessProbe:
+            httpGet:
+              path: /monitoring/health
+              port: 8080
+              scheme: HTTP
+            periodSeconds: 1
+          livenessProbe:
+            httpGet:
+              path: /monitoring/health
+              port: 8080
+              scheme: HTTP
