@@ -1,6 +1,5 @@
 import http from 'k6/http';
 import {check, sleep} from 'k6';
-import { Rate } from 'k6/metrics';
 
 export const options = {
     stages: [
@@ -21,13 +20,12 @@ export default function () {
         },
     };
 
-    const res = http.get(`http://localhost/success`, params)
-    check(res, {
+    check(http.get(`http://localhost/success`, params), {
         'status code is 200': (r) => r.status === 200,
         'node is kind-control-plane': (r) => r.json().node === 'kind-control-plane',
         'namespace is sample-app': (r) => r.json().namespace === 'sample-app',
         'pod is sample-app-*': (r) => r.json().pod.includes('sample-app-'),
     });
 
-    sleep(1)
+    sleep(1);
 }
