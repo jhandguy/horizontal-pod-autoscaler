@@ -8,7 +8,7 @@ A sample project showcasing various Horizontal Pod Autoscaler implementations.
 
 ## Installing
 
-### Autoscaling Golang service using memory and CPU metrics
+### Autoscaling Golang service using Metrics Server
 
 ```shell
 kind create cluster --image kindest/node:v1.23.4 --config=kind/cluster.yaml
@@ -24,7 +24,7 @@ helm install golang --name-template sample-app --create-namespace -n sample-app 
 kind delete cluster
 ```
 
-### Autoscaling Kotlin service using CPU metric
+### Autoscaling Kotlin service using Metrics Server
 
 ```shell
 kind create cluster --image kindest/node:v1.23.4 --config=kind/cluster.yaml
@@ -40,7 +40,7 @@ helm install kotlin --name-template sample-app --create-namespace -n sample-app 
 kind delete cluster
 ```
 
-### Autoscaling Golang service using Prometheus metric
+### Autoscaling Golang service using Prometheus Adapter
 
 ```shell
 kind create cluster --image kindest/node:v1.23.4 --config=kind/cluster.yaml
