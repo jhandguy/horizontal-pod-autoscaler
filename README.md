@@ -50,7 +50,7 @@ helm install ingress-nginx/ingress-nginx --name-template ingress-nginx --create-
 
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install prometheus-community/kube-prometheus-stack --name-template prometheus --create-namespace -n prometheus --version 34.9.1 --wait
-helm install prometheus-community/prometheus-adapter --name-template prometheus-adapter -n prometheus --values kind/prometheus-adapter-values.yaml --version 3.2.1 --wait
+helm install prometheus-community/prometheus-adapter --name-template prometheus-adapter --create-namespace -n prometheus-adapter --values kind/prometheus-adapter-values.yaml --version 3.2.1 --wait
 
 helm install golang --name-template sample-app --create-namespace -n sample-app --set prometheus.enabled=true --wait
 
