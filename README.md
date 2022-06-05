@@ -2,7 +2,7 @@
 
 A sample project showcasing various Horizontal Pod Autoscaler implementations.
 
-## Medium Articles
+## Blog Posts
 
 > Coming soon!
 
