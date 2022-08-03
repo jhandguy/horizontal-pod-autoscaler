@@ -4,7 +4,8 @@ A sample project showcasing various Horizontal Pod Autoscaler implementations.
 
 ## Blog Posts
 
-> Coming soon!
+- [Horizontal Pod Autoscaler in Kubernetes (Part 1) — Simple Autoscaling using Metrics Server](https://jhandguy.github.io/posts/simple-horizontal-autoscaling/)
+- [Horizontal Pod Autoscaler in Kubernetes (Part 2) — Advanced Autoscaling using Prometheus Adapter](https://jhandguy.github.io/posts/advanced-horizontal-autoscaling/)
 
 ## Installing
 
