@@ -20,7 +20,7 @@ helm install ingress-nginx/ingress-nginx --name-template ingress-nginx --create-
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server
 helm install metrics-server/metrics-server --name-template metrics-server --create-namespace -n metrics-server --values kind/metrics-server-values.yaml --version 3.8.2 --wait
 
-helm install golang --name-template sample-app --create-namespace -n sample-app --wait
+helm install golang-sample-app/helm-chart --name-template sample-app --create-namespace -n sample-app --wait
 
 kind delete cluster
 ```
@@ -36,7 +36,7 @@ helm install ingress-nginx/ingress-nginx --name-template ingress-nginx --create-
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server
 helm install metrics-server/metrics-server --name-template metrics-server --create-namespace -n metrics-server --values kind/metrics-server-values.yaml --version 3.8.2 --wait
 
-helm install kotlin --name-template sample-app --create-namespace -n sample-app --wait
+helm install kotlin-sample-app/helm-chart --name-template sample-app --create-namespace -n sample-app --wait
 
 kind delete cluster
 ```
@@ -53,7 +53,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm install prometheus-community/kube-prometheus-stack --name-template prometheus --create-namespace -n prometheus --version 34.9.1 --wait
 helm install prometheus-community/prometheus-adapter --name-template prometheus-adapter --create-namespace -n prometheus-adapter --values kind/prometheus-adapter-values.yaml --version 3.2.1 --wait
 
-helm install golang --name-template sample-app --create-namespace -n sample-app --set prometheus.enabled=true --wait
+helm install golang-sample-app/helm-chart --name-template sample-app --create-namespace -n sample-app --set prometheus.enabled=true --wait
 
 kind delete cluster
 ```
