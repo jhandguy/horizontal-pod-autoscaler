@@ -21,8 +21,6 @@ helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server
 helm install metrics-server/metrics-server --name-template metrics-server --create-namespace -n metrics-server --values kind/metrics-server-values.yaml --version 3.8.2 --wait
 
 helm install golang-sample-app/helm-chart --name-template sample-app --create-namespace -n sample-app --wait
-
-kind delete cluster
 ```
 
 ### Autoscaling Kotlin service using Metrics Server
@@ -37,8 +35,6 @@ helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server
 helm install metrics-server/metrics-server --name-template metrics-server --create-namespace -n metrics-server --values kind/metrics-server-values.yaml --version 3.8.2 --wait
 
 helm install kotlin-sample-app/helm-chart --name-template sample-app --create-namespace -n sample-app --wait
-
-kind delete cluster
 ```
 
 ### Autoscaling Golang service using Prometheus Adapter
@@ -54,8 +50,6 @@ helm install prometheus-community/kube-prometheus-stack --name-template promethe
 helm install prometheus-community/prometheus-adapter --name-template prometheus-adapter --create-namespace -n prometheus-adapter --values kind/prometheus-adapter-values.yaml --version 3.2.1 --wait
 
 helm install golang-sample-app/helm-chart --name-template sample-app --create-namespace -n sample-app --set prometheus.enabled=true --wait
-
-kind delete cluster
 ```
 
 ## Smoke Testing
@@ -69,4 +63,10 @@ curl localhost/error -H "Host: sample.app" -v
 
 ```shell
 k6 run k6/script.js
+```
+
+## Uninstalling
+
+```shell
+kind delete cluster
 ```
