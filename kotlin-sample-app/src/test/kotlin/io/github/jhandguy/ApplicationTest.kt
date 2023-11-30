@@ -28,7 +28,7 @@ class ApplicationTest {
             assertEquals(HttpStatusCode.OK, status)
             assertEquals("{\"node\":\"kind-control-plane\",\"namespace\":\"sample-app\",\"pod\":\"sample-app-6bd9dc6d5d-jstn2\"}", bodyAsText())
         }
-        client.get("/failure").apply {
+        client.get("/error").apply {
             assertEquals(HttpStatusCode.InternalServerError, status)
             assertEquals("", bodyAsText())
         }

@@ -1,6 +1,6 @@
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:21-jre-alpine
 
-COPY build/libs/kotlin-sample-app-*.jar /kotlin-sample-app.jar
+COPY build/libs/kotlin-sample-app-all.jar /kotlin-sample-app.jar
 
 ENTRYPOINT java $JAVA_OPTS \
 	-jar /kotlin-sample-app.jar \

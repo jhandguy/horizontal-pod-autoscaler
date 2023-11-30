@@ -1,11 +1,19 @@
 import http from 'k6/http';
-import {check, sleep} from 'k6';
+import {check} from 'k6';
 
 export const options = {
-    stages: [
-        {target: 100, duration: '3m'},
-        {target: 100, duration: '2m'},
-    ],
+    scenarios: {
+        load: {
+            executor: 'ramping-arrival-rate',
+            startRate: 1,
+            timeUnit: '1s',
+            preAllocatedVUs: 100,
+            stages: [
+                {target: 100, duration: '3m'},
+                {target: 0, duration: '2m'},
+            ],
+        },
+    },
     thresholds: {
         'checks': ['rate>0.9'],
         'http_req_duration': ['p(95)<10000'],
@@ -26,6 +34,4 @@ export default function () {
         'namespace is sample-app': (r) => r.json().namespace === 'sample-app',
         'pod is sample-app-*': (r) => r.json().pod.includes('sample-app-'),
     });
-
-    sleep(1);
 }

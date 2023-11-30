@@ -20,7 +20,7 @@ fun Application.module() {
     }
     routeHealth()
     routeSuccess()
-    routeFailure()
+    routeError()
 }
 
 fun Application.routeHealth(): Routing = routing {
@@ -45,8 +45,8 @@ fun Application.routeSuccess(): Routing = routing {
     }
 }
 
-fun Application.routeFailure(): Routing = routing {
-    get("/failure") {
+fun Application.routeError(): Routing = routing {
+    get("/error") {
         call.respond(HttpStatusCode.InternalServerError)
     }
 }
